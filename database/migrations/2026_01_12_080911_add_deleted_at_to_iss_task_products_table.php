@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('task_products', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if (Schema::hasTable('task_products') && !Schema::hasColumn('task_products', 'deleted_at')) {
+            Schema::table('task_products', function (Blueprint $table) {
+                $table->softDeletes();
+            });
+        }
     }
 
     /**
@@ -26,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task_products');
+        Schema::table('task_products', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

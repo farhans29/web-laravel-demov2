@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('global_title', function (Blueprint $table) {
-            $table->increments('idrec');
-            $table->string('key', 50);
-            $table->string('mark', 50);
-            
-        });
+        if (!Schema::hasTable('global_title')) {
+            Schema::create('global_title', function (Blueprint $table) {
+                $table->increments('idrec');
+                $table->string('key', 50);
+                $table->string('mark', 50);
+            });
+        }
     }
 
     /**
