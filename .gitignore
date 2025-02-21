@@ -20,4 +20,5 @@ yarn-error.log
 /.zip
 *.zip
 .DS_Store
+*.DS_Store
 MACOSX_
