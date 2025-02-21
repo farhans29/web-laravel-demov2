@@ -1,28 +1,19 @@
-# exclude node_modules, public, and build
+/.phpunit.cache
 /node_modules
 /public/build
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
-iss.sql
-
-# exclude env
 .env
 .env.backup
 .env.production
-.env.tester
-
-# exclude unit tester and logger
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
+auth.json
 npm-debug.log
 yarn-error.log
-
-# exclude others
+/.fleet
 /.idea
 /.vscode
-*.zip
-/.zip
-
