@@ -11,18 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sidebar_items', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('route')->nullable();
-            $table->unsignedBigInteger('permission_id')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->integer('order')->default(0);
-            $table->timestamps();
+        if (!Schema::hasTable('sidebar_items')) {
+            Schema::create('sidebar_items', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('route')->nullable();
+                $table->unsignedBigInteger('permission_id')->nullable();
+                $table->unsignedBigInteger('parent_id')->nullable();
+                $table->integer('order')->default(0);
+                $table->timestamps();
 
-            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('set null');
-            $table->foreign('parent_id')->references('id')->on('sidebar_items')->onDelete('cascade');
-        });
+                $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('set null');
+                $table->foreign('parent_id')->references('id')->on('sidebar_items')->onDelete('cascade');
+            });
+        }
     }
 
     /**
