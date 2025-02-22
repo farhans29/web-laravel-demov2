@@ -51,7 +51,7 @@
             <!-- Content -->
             <div class="relative">
                 <h1 class="text-2xl md:text-3xl text-slate-800 font-bold mb-1">
-                    THIS IS {{ $globalTitle }}, Welcome to {{ Auth::user()->name }}
+                    THIS IS TEST BUILD, Welcome to {{ $globalTitle }}, {{ Auth::user()->name }}
                 </h1>
                 <p>Responsibility to build Manpower</p>
             </div>
