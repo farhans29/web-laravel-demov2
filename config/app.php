@@ -1,9 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
-use Illuminate\Support\ServiceProvider;
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom config
+    |--------------------------------------------------------------------------
+    */
+    
+    'base_url_file' => env('BASE_URL_FILE', 'https://integrated-os.cloud/web-laravel-dkm/'),
+    'save_url_file' => env('SAVE_URL_FILE', '/home/iosadmin/public_html/web-laravel-dkm/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -16,7 +24,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -70,7 +78,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -141,7 +149,7 @@ return [
 
     'maintenance' => [
         'driver' => 'file',
-        // 'store' => 'redis',
+        // 'store'  => 'redis',
     ],
 
     /*
@@ -155,25 +163,8 @@ return [
     |
     */
 
-    // 'providers' => ServiceProvider::defaultProviders()->merge([
-    //     /*
-    //      * Package Service Providers...
-    //      */
-
-    //     /*
-    //      * Application Service Providers...
-    //      */
-    //     App\Providers\AppServiceProvider::class,
-    //     App\Providers\AuthServiceProvider::class,
-    //     // App\Providers\BroadcastServiceProvider::class,
-    //     App\Providers\EventServiceProvider::class,
-    //     App\Providers\RouteServiceProvider::class,
-    //     App\Providers\FortifyServiceProvider::class,
-    //     App\Providers\JetstreamServiceProvider::class,
-    //     App\Providers\GlobalTitleServiceProvider::class,
-
-    // ])->toArray(),
     'providers' => [
+
         /*
          * Laravel Framework Service Providers...
          */
@@ -199,6 +190,15 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+
+        /*
+         * Package Service Providers...
+         */
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        /*
+         * Application Service Providers...
+         */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -206,7 +206,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
-        App\Providers\GlobalTitleServiceProvider::class,
+        App\Providers\ContentServiceProvider::class
+
     ],
 
     /*
@@ -221,7 +222,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        'Helper' => App\Helpers\Helper::class,
+        'Divider' => App\Helpers\Divider::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ])->toArray(),
 
 ];

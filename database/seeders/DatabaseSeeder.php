@@ -12,11 +12,22 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run(): void
+    public function run()
     {
+
         $this->call([
             DashboardTableSeeder::class,
-            MWarehouseSeeder::class,
+            AnalyticsTableSeeder::class,
+            FintechTableSeeder::class,
+            CustomerSeeder::class,
+            OrderSeeder::class,
+            InvoiceSeeder::class,
+            MemberSeeder::class,
+            TransactionSeeder::class,
+            JobSeeder::class,
+            CampaignSeeder::class,
+            MarketerSeeder::class,
+            CampaignMarketerSeeder::class,
         ]);
     }
 }
