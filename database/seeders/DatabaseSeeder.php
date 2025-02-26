@@ -15,8 +15,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            DashboardTableSeeder::class,
+            // DashboardTableSeeder::class,
             MWarehouseSeeder::class,
+            MWhLevelTableSeeder::class,
+            MWhZoneTableSeeder::class,
+            MWhRackTableSeeder::class,
         ]);
     }
 }
